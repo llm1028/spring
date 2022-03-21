@@ -4,6 +4,7 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/spring-ioc/spring-ioc.iml" filepath="$PROJECT_DIR$/spring-ioc/spring-ioc.iml" />
       <module fileurl="file://$PROJECT_DIR$/spring-plug/spring-plug.iml" filepath="$PROJECT_DIR$/spring-plug/spring-plug.iml" />
+      <module fileurl="file://$PROJECT_DIR$/spring-redisson/spring-redisson.iml" filepath="$PROJECT_DIR$/spring-redisson/spring-redisson.iml" />
     </modules>
   </component>
 </project>
