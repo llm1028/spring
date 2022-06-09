@@ -1,9 +1,12 @@
 package com.example.springredisson.controller;
 
 import com.example.springredisson.common.ResponseModel;
+import com.example.springredisson.common.req.OrderInfoReq;
+import com.example.springredisson.event.MessageEvent;
 import org.redisson.api.RLock;
 import org.redisson.api.RedissonClient;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.ApplicationContext;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -25,10 +28,13 @@ import java.util.concurrent.TimeUnit;
 public class OrderController {
 
     @Autowired
+    ApplicationContext applicationContext;
+    @Autowired
     RedissonClient redissonClient;
 
     @Resource
     private RedisTemplate redisTemplate;
+
 
     @RequestMapping("/initStock")
     public void initStock(HttpServletRequest request, HttpServletResponse response, String productId) {
@@ -67,6 +73,17 @@ public class OrderController {
             }
         }
         return ResponseModel.buildSuccessResponseModel("aa");
+    }
+
+    @RequestMapping("/register")
+    public ResponseModel register(HttpServletRequest request, HttpServletResponse response) {
+        OrderInfoReq orderInfoReq = new OrderInfoReq();
+        orderInfoReq.setOrderId("20221212X123");
+        orderInfoReq.setMobile("13261607121");
+        orderInfoReq.setUserId("1001");
+        MessageEvent messageEvent = new MessageEvent(this, orderInfoReq);
+        applicationContext.publishEvent(messageEvent);
+        return ResponseModel.buildSuccessResponseModel("成功");
     }
 
 }
