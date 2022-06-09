@@ -29,6 +29,7 @@ public class OrderController {
 
     @Autowired
     ApplicationContext applicationContext;
+
     @Autowired
     RedissonClient redissonClient;
 

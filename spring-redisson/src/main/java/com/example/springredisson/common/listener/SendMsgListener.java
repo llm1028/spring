@@ -1,7 +1,9 @@
 package com.example.springredisson.common.listener;
 
 import com.example.springredisson.event.MessageEvent;
+import lombok.SneakyThrows;
 import org.springframework.context.ApplicationListener;
+import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Component;
 
 /**
@@ -13,8 +15,11 @@ import org.springframework.stereotype.Component;
 @Component
 public class SendMsgListener implements ApplicationListener<MessageEvent> {
 
+    @SneakyThrows
     @Override
+    @Async
     public void onApplicationEvent(MessageEvent event) {
-        System.out.println("发送短信");
+        Thread.sleep(5000);
+        System.out.println("发送短信:"+event.getOrderInfoReq().getMobile());
     }
 }

@@ -2,6 +2,7 @@ package com.example.springredisson.common.listener;
 
 import com.example.springredisson.event.MessageEvent;
 import org.springframework.context.ApplicationListener;
+import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Component;
 
 /**
@@ -14,7 +15,8 @@ import org.springframework.stereotype.Component;
 public class SendMailListener implements ApplicationListener<MessageEvent> {
 
     @Override
+    @Async
     public void onApplicationEvent(MessageEvent event) {
-        System.out.println("发送邮件");
+        System.out.println("发送邮件:"+event.getOrderInfoReq().getOrderId());
     }
 }
