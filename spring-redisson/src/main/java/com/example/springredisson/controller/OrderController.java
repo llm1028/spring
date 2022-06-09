@@ -3,6 +3,7 @@ package com.example.springredisson.controller;
 import com.example.springredisson.common.ResponseModel;
 import com.example.springredisson.common.req.OrderInfoReq;
 import com.example.springredisson.event.MessageEvent;
+import com.gome.architect.idgnrt.IDGenerator;
 import org.redisson.api.RLock;
 import org.redisson.api.RedissonClient;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -35,6 +36,9 @@ public class OrderController {
 
     @Resource
     private RedisTemplate redisTemplate;
+
+    // @Autowired
+    // private IDGenerator idGenerator;
 
 
     @RequestMapping("/initStock")
@@ -85,6 +89,16 @@ public class OrderController {
         MessageEvent messageEvent = new MessageEvent(this, orderInfoReq);
         applicationContext.publishEvent(messageEvent);
         return ResponseModel.buildSuccessResponseModel("成功");
+    }
+
+    @RequestMapping("/testId")
+    public ResponseModel testId(HttpServletRequest request, HttpServletResponse response) {
+        IDGenerator generator = applicationContext.getBean("idGenerator", IDGenerator.class);
+        for(int i=0; i<100;i++){
+            System.out.println(generator.next());
+        }
+        return ResponseModel.buildSuccessResponseModel("成功");
+
     }
 
 }
