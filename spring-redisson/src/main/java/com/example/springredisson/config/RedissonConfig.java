@@ -23,7 +23,8 @@ public class RedissonConfig {
         Config config = new Config();
         config.useClusterServers()
                 .setPassword("liluming")
-                .addNodeAddress("redis://10.115.4.112:8002","redis://10.115.4.112:8003","redis://10.115.4.112:8006");
+                // .addNodeAddress("redis://10.115.4.112:8002","redis://10.115.4.112:8003","redis://10.115.4.112:8006");
+                .addNodeAddress("redis://10.115.4.112:8002");
         return Redisson.create(config);
     }
 

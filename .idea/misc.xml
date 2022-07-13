@@ -6,6 +6,7 @@
         <option value="$PROJECT_DIR$/spring-ioc/pom.xml" />
         <option value="$PROJECT_DIR$/spring-plug/pom.xml" />
         <option value="$PROJECT_DIR$/spring-redisson/pom.xml" />
+        <option value="$PROJECT_DIR$/spring-demo1/pom.xml" />
       </list>
     </option>
   </component>

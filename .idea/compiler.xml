@@ -7,19 +7,23 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="spring-ioc" />
+        <module name="spring-demo1" />
         <module name="spring-redisson" />
+        <module name="spring-ioc" />
         <module name="spring-plug" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
-      <module name="spring-ioc" target="1.7" />
+      <module name="spring-demo" target="8" />
+      <module name="spring-demo1" target="1.8" />
+      <module name="spring-ioc" target="1.5" />
       <module name="spring-plug" target="1.8" />
       <module name="spring-redisson" target="1.8" />
     </bytecodeTargetLevel>
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="spring-demo1" options="-parameters" />
       <module name="spring-plug" options="-parameters" />
       <module name="spring-redisson" options="-parameters" />
     </option>
