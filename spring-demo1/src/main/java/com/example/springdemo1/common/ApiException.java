@@ -47,8 +47,7 @@ public class ApiException extends RuntimeException{
     }
 
     // 默认异常使用APP_ERROR状态码
-    public ApiException(String message) {
-        super(message);
+    public ApiException() {
         this.code = AppCode.APP_ERROR.getCode();
         this.msg = AppCode.APP_ERROR.getMsg();
     }

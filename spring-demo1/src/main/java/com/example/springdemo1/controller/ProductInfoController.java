@@ -6,7 +6,6 @@ import com.example.springdemo1.domin.ProductInfoVo;
 import com.example.springdemo1.service.ProductInfoService;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.util.StringUtils;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
@@ -29,19 +28,8 @@ public class ProductInfoController {
      */
     @GetMapping("/findById")
     public ProductInfoQueryVo findById(Integer id) {
-        // 测试接口错误，默认statuscode里的code, message
-        if (1 == id) {
-            throw new ApiException(ResultCode.VALIDATE_ERROR);
-        }
-        // 测试接口错误，需要自定义message的业务场景
-        if (2 == id) {
-            throw new ApiException(AppCode.PRICE_ERROR, "该商品价格异常 "+id);
-        }
-        // 测试接口错误，需要带返回对象的业务场景
-        if (3 == id) {
-            throw new ApiException(AppCode.PRICE_ERROR, true);
-        }
-        return productInfoService.findById(id);
+
+       return productInfoService.findById(id);
     }
 
     /**
