@@ -1,8 +1,9 @@
 package com.example.springdemo1.controller;
 
 import com.example.springdemo1.common.*;
-import com.example.springdemo1.domin.ProductInfoQueryVo;
-import com.example.springdemo1.domin.ProductInfoVo;
+import com.example.springdemo1.domin.req.ProductInfoQueryReq;
+import com.example.springdemo1.domin.res.ProductInfoRes;
+import com.example.springdemo1.domin.res.ProductListRes;
 import com.example.springdemo1.service.ProductInfoService;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,8 +28,7 @@ public class ProductInfoController {
      * @date 2022/7/13 5:19 下午
      */
     @GetMapping("/findById")
-    public ProductInfoQueryVo findById(Integer id) {
-
+    public ProductInfoQueryReq findById(Integer id) {
        return productInfoService.findById(id);
     }
 
@@ -38,11 +38,23 @@ public class ProductInfoController {
      * @date 2022/7/13 5:17 下午
      */
     @PostMapping("/findByVo")
-    public ProductInfoQueryVo findByVo(@RequestBody @Validated ProductInfoVo vo) {
-        ProductInfoQueryVo productInfo = new ProductInfoQueryVo();
+    public ProductInfoQueryReq findByVo(@RequestBody @Validated ProductInfoRes vo) {
+        ProductInfoQueryReq productInfo = new ProductInfoQueryReq();
         BeanUtils.copyProperties(vo, productInfo);
         return productInfo;
     }
+
+
+    /**
+     * @description: 商品列表,带分页
+     * @author liluming
+     * @date 2022/7/13 5:19 下午
+     */
+    @GetMapping("/queryProductList")
+    public ProductListRes queryProductList() {
+        return productInfoService.queryProductList();
+    }
+
 
     /**
      * @description: 需要直接返回字符串
@@ -54,4 +66,6 @@ public class ProductInfoController {
     public String health() {
         return "success";
     }
+
+
 }

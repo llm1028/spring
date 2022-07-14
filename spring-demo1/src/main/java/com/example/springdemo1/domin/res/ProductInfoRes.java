@@ -1,4 +1,4 @@
-package com.example.springdemo1.domin;
+package com.example.springdemo1.domin.res;
 
 import lombok.Data;
 
@@ -13,7 +13,7 @@ import java.math.BigDecimal;
  * @date 2022/7/13 3:23 下午
  */
 @Data
-public class ProductInfoVo {
+public class ProductInfoRes {
     // 商品名称
     @NotNull(message = "商品名称不能为空")
     private String productName;

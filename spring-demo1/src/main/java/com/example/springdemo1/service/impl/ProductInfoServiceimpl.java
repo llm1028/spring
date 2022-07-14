@@ -3,12 +3,16 @@ package com.example.springdemo1.service.impl;
 import com.example.springdemo1.common.ApiException;
 import com.example.springdemo1.common.AppCode;
 import com.example.springdemo1.common.ResultCode;
-import com.example.springdemo1.domin.ProductInfoQueryVo;
-import com.example.springdemo1.domin.ProductInfoVo;
+import com.example.springdemo1.domin.common.PageInfo;
+import com.example.springdemo1.domin.req.ProductInfoQueryReq;
+import com.example.springdemo1.domin.res.ProductInfoRes;
+import com.example.springdemo1.domin.res.ProductListRes;
 import com.example.springdemo1.service.ProductInfoService;
 import org.springframework.stereotype.Service;
 
 import java.math.BigDecimal;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * @author liluming
@@ -19,8 +23,8 @@ import java.math.BigDecimal;
 @Service
 public class ProductInfoServiceimpl implements ProductInfoService {
     @Override
-    public ProductInfoQueryVo findById(Integer id) {
-        ProductInfoQueryVo productInfoQueryVo = new ProductInfoQueryVo();
+    public ProductInfoQueryReq findById(Integer id) {
+        ProductInfoQueryReq productInfoQueryVo = new ProductInfoQueryReq();
 
         try {
             // 测试接口错误，默认statuscode里的code, message
@@ -41,7 +45,7 @@ public class ProductInfoServiceimpl implements ProductInfoService {
             }
             // 测试异常情况
             if (5 == id) {
-                ProductInfoVo productInfoVo = null;
+                ProductInfoRes productInfoVo = null;
                 System.out.println(productInfoVo.getProductPrice());
             }
 
@@ -54,6 +58,28 @@ public class ProductInfoServiceimpl implements ProductInfoService {
             throw new ApiException();
         }
         return productInfoQueryVo;
+    }
+
+    @Override
+    public ProductListRes queryProductList() {
+        ProductListRes productListRes = new ProductListRes();
+
+        PageInfo pageInfo = new PageInfo();
+        pageInfo.setPageNum(1);
+        pageInfo.setPageSize(10);
+        pageInfo.setTotal(11);
+        pageInfo.setTotalPage(2);
+        productListRes.setPageInfo(pageInfo);
+
+        List<ProductInfoRes> productInfoResList = new ArrayList<>();
+        for (int i = 0; i < 10; i++) {
+            ProductInfoRes productInfoRes = new ProductInfoRes();
+            productInfoRes.setProductPrice(BigDecimal.valueOf(i));
+            productInfoRes.setProductName("商品"+i);
+            productInfoResList.add(productInfoRes);
+        }
+        productListRes.setRecordList(productInfoResList);
+        return productListRes;
     }
 
 }

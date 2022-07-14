@@ -1,4 +1,4 @@
-package com.example.springdemo1.domin;
+package com.example.springdemo1.domin.req;
 
 import lombok.Data;
 
@@ -11,7 +11,7 @@ import java.math.BigDecimal;
  * @date 2022/7/11 5:27 下午
  */
 @Data
-public class ProductInfoQueryVo {
+public class ProductInfoQueryReq {
 
     private Integer productId;
     private String productName;
