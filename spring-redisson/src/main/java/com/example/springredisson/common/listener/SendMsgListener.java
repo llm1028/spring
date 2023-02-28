@@ -20,6 +20,6 @@ public class SendMsgListener implements ApplicationListener<MessageEvent> {
     @Async
     public void onApplicationEvent(MessageEvent event) {
         Thread.sleep(5000);
-        System.out.println("发送短信:"+event.getOrderInfoReq().getMobile());
+        System.out.println("发送短信:" + event.getOrderInfoReq().getMobile());
     }
 }

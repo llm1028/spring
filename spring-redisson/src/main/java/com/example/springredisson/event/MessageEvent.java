@@ -13,6 +13,7 @@ import org.springframework.context.ApplicationEvent;
 
 public class MessageEvent extends ApplicationEvent {
     private OrderInfoReq orderInfoReq;
+
     public MessageEvent(Object source, OrderInfoReq orderInfoReq) {
         super(source);
         this.orderInfoReq = orderInfoReq;

@@ -43,7 +43,7 @@ public class OrderController {
 
     @RequestMapping("/initStock")
     public void initStock(HttpServletRequest request, HttpServletResponse response, String productId) {
-        String stockKey = "product:"+productId;
+        String stockKey = "product:" + productId;
         System.out.println(stockKey);
         redisTemplate.opsForValue().set(stockKey, 5, 10, TimeUnit.MINUTES);
         System.out.println(redisTemplate.opsForValue().get(stockKey));
@@ -53,18 +53,18 @@ public class OrderController {
     public ResponseModel toOrder(HttpServletRequest request, HttpServletResponse response, String productId) {
 
         ResponseModel<Object> responseModel = new ResponseModel<>();
-        String stockKey = "product:"+productId;
-        String lockStockKey = "product:lock_"+productId;
+        String stockKey = "product:" + productId;
+        String lockStockKey = "product:lock_" + productId;
 
         RLock rLock = redissonClient.getLock(lockStockKey);
         rLock.lock();
         try {
             Integer stock = (Integer) redisTemplate.opsForValue().get(stockKey);
-            if (null != stock && stock>0) {
+            if (null != stock && stock > 0) {
                 redisTemplate.opsForValue().increment(stockKey, -1);
                 responseModel.setCode("100");
-                responseModel.setMsg("下单成功，剩余库存："+redisTemplate.opsForValue().get(stockKey));
-                System.out.println("下单成功，剩余库存："+redisTemplate.opsForValue().get(stockKey));
+                responseModel.setMsg("下单成功，剩余库存：" + redisTemplate.opsForValue().get(stockKey));
+                System.out.println("下单成功，剩余库存：" + redisTemplate.opsForValue().get(stockKey));
             } else {
                 responseModel.setMsg("库存不够");
                 System.out.println("库存不够");
@@ -94,7 +94,7 @@ public class OrderController {
     @RequestMapping("/testId")
     public ResponseModel testId(HttpServletRequest request, HttpServletResponse response) {
         IDGenerator generator = applicationContext.getBean("idGenerator", IDGenerator.class);
-        for(int i=0; i<100;i++){
+        for (int i = 0; i < 100; i++) {
             System.out.println(generator.next());
         }
         return ResponseModel.buildSuccessResponseModel("成功");

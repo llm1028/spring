@@ -16,7 +16,7 @@
     <bytecodeTargetLevel>
       <module name="spring-demo" target="8" />
       <module name="spring-demo1" target="1.8" />
-      <module name="spring-ioc" target="1.5" />
+      <module name="spring-ioc" target="8" />
       <module name="spring-plug" target="1.8" />
       <module name="spring-redisson" target="1.8" />
     </bytecodeTargetLevel>

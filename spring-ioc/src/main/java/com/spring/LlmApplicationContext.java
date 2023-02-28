@@ -29,7 +29,7 @@ public class LlmApplicationContext {
 
     public LlmApplicationContext(Class configClass) {
         this.configClass = configClass;
-        // 扫描包路径
+        // 扫描包路径，生成beanDefinitionMap
         scan(configClass);
 
         // 创建单例bean
@@ -72,7 +72,7 @@ public class LlmApplicationContext {
             }
             // 3.初始化
             if (instance instanceof InitializingBean) {
-                ((InitializingBean)instance).afterPropertiesSet();
+                ((InitializingBean) instance).afterPropertiesSet();
             }
             // 4.初始化后
             for (BeanPostProcessor beanPostProcessor : beanPostProcessorList) {
@@ -117,6 +117,7 @@ public class LlmApplicationContext {
 
     /**
      * 扫描bean，设置BeanDefinition
+     *
      * @param configClass
      */
     private void scan(Class configClass) {
@@ -141,7 +142,7 @@ public class LlmApplicationContext {
 
                     // 转换路径为类的路径
                     absolutePath = absolutePath.substring(absolutePath.indexOf("com"), absolutePath.indexOf(".class"));
-                    absolutePath = absolutePath.replace("/",".");
+                    absolutePath = absolutePath.replace("/", ".");
                     // System.out.println(absolutePath);
                     try {
                         Class<?> clazz = classLoader.loadClass(absolutePath);

@@ -20,7 +20,7 @@ import java.util.List;
  * @description:
  * @date 2022/7/11 5:28 下午
  */
-@Service
+@Service(value = "product1")
 public class ProductInfoServiceimpl implements ProductInfoService {
     @Override
     public ProductInfoQueryReq findById(Integer id) {
@@ -33,7 +33,7 @@ public class ProductInfoServiceimpl implements ProductInfoService {
             }
             // 测试接口错误，需要自定义message的业务场景
             if (2 == id) {
-                throw new ApiException(AppCode.PRICE_ERROR, "该商品价格异常 "+id);
+                throw new ApiException(AppCode.PRICE_ERROR, "该商品价格异常 " + id);
             }
             // 测试接口错误，需要带返回对象的业务场景
             if (3 == id) {
@@ -41,7 +41,7 @@ public class ProductInfoServiceimpl implements ProductInfoService {
             }
             // 测试异常情况
             if (4 == id) {
-                int a = 4/0;
+                int a = 4 / 0;
             }
             // 测试异常情况
             if (5 == id) {
@@ -75,7 +75,7 @@ public class ProductInfoServiceimpl implements ProductInfoService {
         for (int i = 0; i < 10; i++) {
             ProductInfoRes productInfoRes = new ProductInfoRes();
             productInfoRes.setProductPrice(BigDecimal.valueOf(i));
-            productInfoRes.setProductName("商品"+i);
+            productInfoRes.setProductName("商品" + i);
             productInfoResList.add(productInfoRes);
         }
         productListRes.setRecordList(productInfoResList);

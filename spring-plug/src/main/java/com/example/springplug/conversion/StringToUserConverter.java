@@ -28,7 +28,7 @@ public class StringToUserConverter implements ConditionalGenericConverter {
     @Override
     public Object convert(Object source, TypeDescriptor sourceType, TypeDescriptor targetType) {
         User user = new User();
-        user.setName((String)source);
+        user.setName((String) source);
         return user;
     }
 }

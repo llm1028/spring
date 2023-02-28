@@ -17,7 +17,7 @@ public class Test {
     public static void main(String[] args) {
         // 创建单例bean
         LlmApplicationContext applicationContext = new LlmApplicationContext(AppConfig.class);
-        UserInterface userService = (UserInterface)applicationContext.getBean("userService");
+        UserInterface userService = (UserInterface) applicationContext.getBean("userService");
         // 测试单例
         userService.test();
         // 测试格式化
@@ -53,16 +53,16 @@ public class Test {
         // System.out.println((byte)(-128 >>> 1));
 
         String name = "李哈李哈李•哈李哈李哈李哈李哈李哈李哈李哈李哈李哈李李李李李李哈李哈李哈李哈李哈李哈李哈李哈李哈李哈李李李李李李哈李哈李哈李哈李哈李哈李哈李哈李哈李哈李李李李李李哈李哈李哈李哈李哈李哈李哈李哈李哈李哈李李李李李李";
-        if (name.contains("·") || name.contains("•")){
-            if (name.matches("^[\\u4e00-\\u9fa5]+[·•][\\u4e00-\\u9fa5]{2,25}")){
+        if (name.contains("·") || name.contains("•")) {
+            if (name.matches("^[\\u4e00-\\u9fa5]+[·•][\\u4e00-\\u9fa5]{2,25}")) {
                 System.out.println("true1");
-            }else {
+            } else {
                 System.out.println("false11");
             }
-        }else {
-            if (name.matches("^[\\u4e00-\\u9fa5]{2,25}")){
+        } else {
+            if (name.matches("^[\\u4e00-\\u9fa5]{2,25}")) {
                 System.out.println("true");
-            }else {
+            } else {
                 System.out.println("false");
             }
         }

@@ -17,14 +17,14 @@ import java.io.IOException;
 @Configuration
 public class RedissonConfig {
 
-    @Bean(destroyMethod="shutdown")
+    @Bean(destroyMethod = "shutdown")
     RedissonClient redisson() throws IOException {
         //1、创建配置
         Config config = new Config();
         config.useClusterServers()
                 .setPassword("liluming")
-                // .addNodeAddress("redis://10.115.4.112:8002","redis://10.115.4.112:8003","redis://10.115.4.112:8006");
-                .addNodeAddress("redis://10.115.4.112:8002");
+                .addNodeAddress("redis://10.115.4.112:8001", "redis://10.115.4.112:8002", "redis://10.115.4.112:8003");
+        // .addNodeAddress("redis://10.115.4.112:8002");
         return Redisson.create(config);
     }
 

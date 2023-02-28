@@ -17,6 +17,6 @@ public class SendMailListener implements ApplicationListener<MessageEvent> {
     @Override
     @Async
     public void onApplicationEvent(MessageEvent event) {
-        System.out.println("发送邮件:"+event.getOrderInfoReq().getOrderId());
+        System.out.println("发送邮件:" + event.getOrderInfoReq().getOrderId());
     }
 }

@@ -73,7 +73,7 @@ public class ResponseModel<T> {
      * @param data    数据
      */
     public ResponseModel(String success, String errCode, T data) {
-        SimpleDateFormat sdf =   new SimpleDateFormat( " yyyy-MM-dd " );
+        SimpleDateFormat sdf = new SimpleDateFormat(" yyyy-MM-dd ");
         String dateStr = sdf.format(new Date());
         this.isSuccess = success;
         this.code = errCode;

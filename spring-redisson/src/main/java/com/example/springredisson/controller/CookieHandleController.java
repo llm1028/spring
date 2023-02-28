@@ -23,7 +23,7 @@ public class CookieHandleController {
         return "hello world!!!";
     }
 
-    @RequestMapping(value = "/crossSiteCookie", method= RequestMethod.GET, produces = "application/javascript;charset=UTF-8")
+    @RequestMapping(value = "/crossSiteCookie", method = RequestMethod.GET, produces = "application/javascript;charset=UTF-8")
     @ResponseBody
     public String crossSiteCookie(
             HttpServletRequest request,
@@ -50,6 +50,6 @@ public class CookieHandleController {
         SimpleDateFormat sdf = new SimpleDateFormat("EEE, d MMM yyyy HH:mm:ss Z", Locale.US);
         String responseHeaderString = cookieKey + "=" + cookieValue + ";";
         // httpServletResponse.addHeader("Set-Cookie",responseHeaderString + "Path=/; Domain=" + cookieDomain + "; Expires=" + sdf.format(date) + "; SameSite=None; Secure=false"); // Chrome浏览器跨域写Cookie需要带的属性
-        httpServletResponse.addHeader("Set-Cookie",responseHeaderString + "Path=/; Domain=" + cookieDomain + "; Expires=" + sdf.format(date) + "; SameSite=None; "); // Chrome浏览器跨域写Cookie需要带的属性
+        httpServletResponse.addHeader("Set-Cookie", responseHeaderString + "Path=/; Domain=" + cookieDomain + "; Expires=" + sdf.format(date) + "; SameSite=None; "); // Chrome浏览器跨域写Cookie需要带的属性
     }
 }

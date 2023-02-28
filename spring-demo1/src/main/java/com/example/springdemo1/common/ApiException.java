@@ -9,7 +9,7 @@ import lombok.Getter;
  * @date 2022/7/13 4:41 下午
  */
 @Getter
-public class ApiException extends RuntimeException{
+public class ApiException extends RuntimeException {
     private int code;
     private String msg;
     // 返回对象
@@ -34,6 +34,7 @@ public class ApiException extends RuntimeException{
         // 状态码配套的msg
         this.msg = message;
     }
+
     // 手动设置异常
     public ApiException(StatusCode statusCode, Object data) {
         // message用于用户设置抛出错误详情

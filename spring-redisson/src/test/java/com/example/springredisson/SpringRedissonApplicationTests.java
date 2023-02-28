@@ -9,7 +9,7 @@ import org.springframework.context.ApplicationContext;
 @SpringBootTest
 class SpringRedissonApplicationTests {
     @Autowired
-    private ApplicationContext  applicationContext;
+    private ApplicationContext applicationContext;
 
     @Test
     void contextLoads() {
@@ -25,7 +25,7 @@ class SpringRedissonApplicationTests {
     void testIdgenerator() {
 
         IDGenerator generator = applicationContext.getBean("idGenerator", IDGenerator.class);
-        for(int i=0; i<100;i++){
+        for (int i = 0; i < 100; i++) {
             System.out.println(generator.next());
         }
     }

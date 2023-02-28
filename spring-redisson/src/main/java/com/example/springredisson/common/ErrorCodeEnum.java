@@ -15,18 +15,25 @@ public enum ErrorCodeEnum {
     private Integer id;
     private String code;
     private String name;
+
     private ErrorCodeEnum(Integer id, String code, String name) {
         this.id = id;
         this.code = code;
         this.name = name;
     }
 
-    public String getCode() { return code; }
+    public String getCode() {
+        return code;
+    }
+
     public void setCode(String code) {
         this.code = code;
     }
 
-    public Integer getId() { return id; }
+    public Integer getId() {
+        return id;
+    }
+
     public void setId(Integer code) {
         this.id = id;
     }
@@ -34,6 +41,7 @@ public enum ErrorCodeEnum {
     public String getName() {
         return name;
     }
+
     public void setName(String name) {
         this.name = name;
     }

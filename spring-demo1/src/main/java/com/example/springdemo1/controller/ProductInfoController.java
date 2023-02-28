@@ -10,6 +10,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
+import javax.annotation.Resource;
+
 /**
  * @author liluming
  * @className: ProductInfoController
@@ -19,7 +21,7 @@ import org.springframework.web.bind.annotation.*;
 @RestController
 @RequestMapping("/product/product-info")
 public class ProductInfoController {
-    @Autowired
+    @Resource(name = "product1")
     ProductInfoService productInfoService;
 
     /**
@@ -29,7 +31,7 @@ public class ProductInfoController {
      */
     @GetMapping("/findById")
     public ProductInfoQueryReq findById(Integer id) {
-       return productInfoService.findById(id);
+        return productInfoService.findById(id);
     }
 
     /**
@@ -46,7 +48,7 @@ public class ProductInfoController {
 
 
     /**
-     * @description: 商品列表,带分页
+     * @description: 商品列表, 带分页
      * @author liluming
      * @date 2022/7/13 5:19 下午
      */

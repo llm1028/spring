@@ -7,4 +7,5 @@ package com.spring;
  * @date 2021/12/10 4:21 下午
  */
 public interface BeanNameAware {
-    void setBeanName(String var1);}
+    void setBeanName(String var1);
+}
